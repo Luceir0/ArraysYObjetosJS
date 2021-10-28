@@ -1,0 +1,149 @@
+<!-- Crea una clase Cliente y define un array de clientes -->
+<!-- A partir del mismo, el usuario podrá elegir del menú:
+    1.Todos los clientes: se mostrará una tabla con los valores que están en la variable anterior.
+
+    2.Usuarios de una provincia: y a partir de la provincia introducida por el usuario se mostrarán en una tabla los nombres y cuotas de las personas que viven en esa provincia.
+
+    3.Usuarios que tengan una cuota mayor o menor que un valor: y se mostrarán en una tabla los nombres de usuario, provincias y cuotas de aquellos que tienen una cuota superior o inferior al valor introducido por el usuario (valora cuál es el mejor modo de hacerlo). -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clientes</title>
+    <style>
+        tr, td, table {
+            padding: 20px;
+        }
+        button {
+            margin-top: 20px;
+        }
+    </style>
+    <script>
+        class Cliente {
+            constructor(nombre, localidad, cuota) {
+                this.nombre = nombre;
+                this.localidad = localidad;
+                this.cuota = cuota;
+            }
+        }
+
+        let arrayClientes = [];
+
+        arrayClientes.push(new Cliente('Laura', 'Santander', 50));
+        arrayClientes.push(new Cliente('Álvaro', 'Castro', 50));
+        arrayClientes.push(new Cliente('Igor', 'Castro', 60));
+        arrayClientes.push(new Cliente('Ivan', 'Santander', 40));
+        arrayClientes.push(new Cliente('Mónica', 'Zamora', 30));
+        arrayClientes.push(new Cliente('Javi', 'Bilbao', 30));
+        arrayClientes.push(new Cliente('David', 'Bilbao', 50));
+
+        document.write(`<table border=2>`);
+            document.write(`<tr>`);
+                document.write(`<td>NOMBRE</td>`);
+                for(i = 0; i < arrayClientes.length; i++) {
+                    document.write(`<td>${arrayClientes[i].nombre}</td>`)
+                }
+            document.write(`</tr>`);
+            document.write(`<tr>`);
+                document.write(`<td>LOCALIDAD</td>`);
+                for(i = 0; i < arrayClientes.length; i++) {
+                    document.write(`<td>${arrayClientes[i].localidad}</td>`)
+                }
+            document.write(`</tr>`);
+            document.write(`<tr>`);
+                document.write(`<td>CUOTA</td>`);
+                for(i = 0; i < arrayClientes.length; i++) {
+                    document.write(`<td>${arrayClientes[i].cuota}</td>`)
+                }
+            document.write(`</tr>`);
+        document.write(`</table>`);
+
+
+        function unaProvincia(){
+            let provincia = prompt('Quiero obtener los usuarios de la provincia: ');
+
+            let clientesFiltrados = arrayClientes.filter(Cliente => Cliente.localidad == provincia);
+
+            document.write(`<h1>Usuarios de ${provincia}: </h1>`)
+            document.write(`<table border=2>`);
+            document.write(`<tr>`);
+                document.write(`<td>NOMBRE</td>`);
+                for(i = 0; i < clientesFiltrados.length; i++) {
+                    document.write(`<td>${clientesFiltrados[i].nombre}</td>`)
+                }
+            document.write(`</tr>`);
+
+            document.write(`<tr>`);
+                document.write(`<td>CUOTA</td>`);
+                for(i = 0; i < clientesFiltrados.length; i++) {
+                    document.write(`<td>${clientesFiltrados[i].cuota}</td>`)
+                }
+            document.write(`</tr>`);
+        document.write(`</table>`);
+        }
+
+        function cuotaMayorMenor() {
+            let laCuota = prompt(`Obtener usuarios con una cuota mayor y menor que: `);
+
+            let clientesConCuotaMayor = arrayClientes.filter(Cliente => Cliente.cuota > laCuota);
+
+            let clientesConCuotaMenor = arrayClientes.filter(Cliente => Cliente.cuota < laCuota);
+
+            document.write(`<h1>Clientes con cuota mayor a ${laCuota}: </h1>`)
+            document.write(`<table border=2>`);
+            document.write(`<tr>`);
+                document.write(`<td>NOMBRE</td>`);
+                for(i = 0; i < clientesConCuotaMayor.length; i++) {
+                    document.write(`<td>${clientesConCuotaMayor[i].nombre}</td>`)
+                }
+            document.write(`</tr>`);
+            document.write(`<tr>`);
+                document.write(`<td>LOCALIDAD</td>`);
+                for(i = 0; i < clientesConCuotaMayor.length; i++) {
+                    document.write(`<td>${clientesConCuotaMayor[i].localidad}</td>`)
+                }
+            document.write(`</tr>`);
+            document.write(`<tr>`);
+                document.write(`<td>CUOTA</td>`);
+                for(i = 0; i < clientesConCuotaMayor.length; i++) {
+                    document.write(`<td>${clientesConCuotaMayor[i].cuota}</td>`)
+                }
+            document.write(`</tr>`);
+        document.write(`</table>`);
+
+
+        document.write(`<h1>Clientes con cuota menor a ${laCuota}: </h1>`)
+            document.write(`<table border=2>`);
+            document.write(`<tr>`);
+                document.write(`<td>NOMBRE</td>`);
+                for(i = 0; i < clientesConCuotaMenor.length; i++) {
+                    document.write(`<td>${clientesConCuotaMenor[i].nombre}</td>`)
+                }
+            document.write(`</tr>`);
+            document.write(`<tr>`);
+                document.write(`<td>LOCALIDAD</td>`);
+                for(i = 0; i < clientesConCuotaMenor.length; i++) {
+                    document.write(`<td>${clientesConCuotaMenor[i].localidad}</td>`)
+                }
+            document.write(`</tr>`);
+            document.write(`<tr>`);
+                document.write(`<td>CUOTA</td>`);
+                for(i = 0; i < clientesConCuotaMenor.length; i++) {
+                    document.write(`<td>${clientesConCuotaMenor[i].cuota}</td>`)
+                }
+            document.write(`</tr>`);
+        document.write(`</table>`);
+        }
+
+
+    </script>
+</head>
+<body>
+    <button onclick="unaProvincia()">Usuarios de una provincia</button>
+    <button onclick="cuotaMayorMenor()">Usuarios con una cuota mayor y menor de X cantidad </button>
+</body>
+</html>

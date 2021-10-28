@@ -1,0 +1,109 @@
+<!-- EJERCICIO 1
+Vamos a gestionar una lista de países haciendo uso de Arrays. 
+Cuando el usuario cargue la página, se cargarán las opciones:
+
+    Mostrar el número de países.
+    Mostrar listado de países (y le preguntará si quiere mostrarlos en el orden que se encuentran en el array, del revés u ordenados alfabéticamente).
+    Añadir un país (y le preguntará si quiere añadir al principio o al final).
+    Borrar un país (y le preguntará si quiere borrar al principio o al final).
+    Consultar un país (y le preguntará si quiere consultar por posición o por nombre).
+    
+    Para ello necesitarás crear un archivo arrays.js que incluya las siguientes funciones, recibirán un array por parametro:
+    
+    Mostrar el número de elementos del array.
+    Mostrar todos los elementos del array.
+    Muestra los elementos del array en sentido inverso.
+    Muestra los elementos del array ordenados alfabéticamente.
+    Añadir un elemento solicitado al usuario al principio del array.
+    Añadir un elemento solicitado al usuario al final del array.
+    Borrar un elemento al principio del array  (y decir cuál se ha borrado).
+    Borrar un elemento al final del array (y decir cuál se ha borrado).
+    Muestra el elemento que se encuentra en una posición que el usuario indica.
+    Muestra la posición en la que se encuentra un elemento que le indica el usuario. -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Países</title>
+    <script type="text/javascript" src="array.js"></script>
+    <style>
+        .lasOpciones {
+            border: 4px solid black;
+            width: 500px;
+            margin: 20px
+        }
+        .titulo {
+            margin: auto;
+            text-align: center;
+            padding: 10px;
+            font-size: 20px;
+        }
+        .losBotones {
+            text-align: center;
+            padding: 10px;
+        }
+        #listado {
+            display: none;
+        }
+        #anadir {
+            display: none;
+        }
+        #borrar {
+            display: none;
+        }
+        #consultar {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <button onclick="funcionNumeroPaises()">Mostrar numero países</button>
+
+    <button onclick="toggleMostrar('listado')">Mostrar listado</button>
+
+    <button onclick="toggleMostrar('anadir')">Añadir país</button>
+
+    <button onclick="toggleMostrar('borrar')">Borrar país</button>
+
+    <button onclick="toggleMostrar('consultar')">Consultar país</button>
+
+    <div class="lasOpciones" id="listado">
+        <div class="titulo">Cómo quiere que se muestren los datos?</div>
+        <div class="losBotones">
+            <button onclick="mostrarPorOrden()">Por orden de array</button>
+            <button onclick="mostrarAlReves()">Al revés de orden de array</button>
+            <button onclick="mostrarAlfabeticamente()">Ordenados alfabéticamente</button>
+        </div>
+    </div>
+
+    <div class="lasOpciones" id="anadir">
+        <div class="titulo">Dónde quiere añadir el país?</div>
+        <div class="losBotones">
+            <button onclick="alPrincipio()">Al principio</button>
+            <button onclick="alFinal()">Al final</button>
+        </div>
+    </div>
+
+    <div class="lasOpciones" id="borrar">
+        <div class="titulo">Por dónde quiere borrar el país?</div>
+        <div class="losBotones">
+            <button onclick="borrarPrincipio()">Por el principio</button>
+            <button onclick="borrarFinal()">Por el final</button>
+        </div>
+    </div>
+
+    <div class="lasOpciones" id="consultar">
+        <div class="titulo">Por qué parámetro prefiere consultar?</div>
+        <div class="losBotones">
+            <button onclick="consultarPorPosicion()">Por su posición en el array</button>
+            <button onclick="consultarPorNombre()">Por nombre</button>
+        </div>
+    </div>
+
+</body>
+</html>
